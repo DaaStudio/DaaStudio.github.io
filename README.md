@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAA Studio - Mobil Uygulama Geliştiricisi</title>
+    <title>DAA Studio - Mobile App Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
             --header-height: 80px;
         }
 
-        /* Genel stiller */
+        /* General styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -38,7 +38,7 @@
             padding: 0 20px;
         }
 
-        /* Başlık (Header) ve Menü */
+        /* Header and Navigation */
         header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -85,7 +85,7 @@
             color: var(--primary-color);
         }
 
-        /* Ana Bölüm (Hero) */
+        /* Hero Section */
         .hero-section {
             display: flex;
             align-items: center;
@@ -145,7 +145,7 @@
             box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
         }
 
-        /* Hakkında Bölümü */
+        /* About Section */
         .about-section {
             padding: 80px 0;
             background-color: #fff;
@@ -167,7 +167,7 @@
             color: #666;
         }
 
-        /* Alt kısım (Footer) */
+        /* Footer */
         footer {
             background-color: var(--text-color);
             color: var(--secondary-color);
@@ -182,7 +182,7 @@
             font-weight: 600;
         }
 
-        /* Mobil uyumluluk */
+        /* Mobile responsive */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -226,9 +226,9 @@
             <a href="https://daastudio.github.io/" class="logo">DAA Studio</a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="https://daastudio.github.io/">Anasayfa</a></li>
-                    <li><a href="https://play.google.com/store/apps/dev?id=5180315254549954413" target="_blank">Uygulamalar</a></li>
-                    <li><a href="#hakkinda">Hakkında</a></li>
+                    <li><a href="https://daastudio.github.io/">Home</a></li>
+                    <li><a href="https://play.google.com/store/apps/dev?id=5180315254549954413" target="_blank">Apps</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
         </div>
@@ -237,28 +237,27 @@
     <main>
         <section class="hero-section">
             <div class="container hero-content">
-                <img src="https://i.hizliresim.com/k6x352i.png" alt="DAA Studio Mobil Geliştiricisi" class="profile-image">
-                <h1>Merhaba, Ben DAA Studio!</h1>
-                <p>Kullanıcıların hayatını kolaylaştıran, eğlenceli ve yenilikçi mobil uygulamalar geliştiriyorum.</p>
-                <a href="https://play.google.com/store/apps/dev?id=5180315254549954413" target="_blank" class="cta-button">Uygulamalarımı Keşfet</a>
+                <img src="https://i.hizliresim.com/k6x352i.png" alt="DAA Studio Mobile Developer" class="profile-image">
+                <h1>Hello, I'm DAA Studio!</h1>
+                <p>I develop innovative, fun, and user-friendly mobile applications that simplify people's lives.</p>
+                <a href="https://play.google.com/store/apps/dev?id=5180315254549954413" target="_blank" class="cta-button">Explore My Apps</a>
             </div>
         </section>
 
-        <section id="hakkinda" class="about-section">
+        <section id="about" class="about-section">
             <div class="container">
-                <h2>Hakkımda</h2>
+                <h2>About Me</h2>
                 <p>
-                    DAA Studio olarak, mobil teknolojinin sınırlarını zorlayan uygulamalar geliştirmeye odaklanıyorum.
-                    Her proje, kullanıcı deneyimini merkeze alarak tasarlanıyor ve sade, kullanışlı arayüzlerle
-                    güçlü özellikleri bir araya getiriyor. Google Play'deki geliştirici sayfamı incelediğinizde,
-                    küçük bir stüdyonun büyük fikirleri nasıl hayata geçirebileceğine şahit olacaksınız.
-                    Amacım, her dokunuşta fark yaratan uygulamalarla dijital dünyanıza değer katmak.
+                    At DAA Studio, I focus on developing applications that push the boundaries of mobile technology.
+                    Every project is designed with the user experience at its core, combining clean, intuitive interfaces
+                    with powerful features. When you explore my developer page on Google Play, you'll witness how
+                    a small studio can bring big ideas to life. My goal is to add value to your digital world
+                    with apps that make a difference with every touch.
                 </p>
                 <p>
-                    Oyunlardan yaşam tarzı uygulamalarına kadar geniş bir yelpazede projeler üretiyorum.
-                    Her bir uygulama, tutku ve titizlikle geliştirilmiş birer eserdir.
-                    Geleceğin mobil deneyimlerini birlikte şekillendirmek için sürekli öğreniyor ve
-                    kendimi geliştiriyorum.
+                    I develop a wide range of projects, from games to lifestyle applications.
+                    Each app is a creation developed with passion and meticulous attention to detail.
+                    I am constantly learning and improving myself to shape the mobile experiences of the future, together.
                 </p>
             </div>
         </section>
@@ -266,7 +265,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 DAA Studio. Tüm hakları saklıdır. | <a href="https://daastudio.github.io/">daastudio.github.io</a></p>
+            <p>&copy; 2025 DAA Studio. All rights reserved. | <a href="https://daastudio.github.io/">daastudio.github.io</a></p>
         </div>
     </footer>
 
