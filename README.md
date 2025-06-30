@@ -237,7 +237,7 @@
     <main>
         <section class="hero-section">
             <div class="container hero-content">
-                <img src="https://i.hizliresim.com/k6x352i.png" alt="DAA Studio Mobile Developer" class="profile-image">
+                <img src="https://play-lh.googleusercontent.com/ARQlDcWULVh1J3fzM5XAAg2u9_DzN0Y6651lWqjF0d3H3rIptp60D6xgYHucnV54Xg=s94-rw" alt="DAA Studio Mobile Developer" class="profile-image">
                 <h1>Hello, I'm DAA Studio!</h1>
                 <p>I develop innovative, fun, and user-friendly mobile applications that simplify people's lives.</p>
                 <a href="https://play.google.com/store/apps/dev?id=5180315254549954413" target="_blank" class="cta-button">Explore My Apps</a>
