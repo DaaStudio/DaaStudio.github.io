@@ -1,18 +1,19 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAA Studio - Mobile App Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #007bff;
-            --secondary-color: #f8f9fa;
-            --text-color: #343a40;
-            --link-color: #0056b3;
-            --background-color: #ffffff;
+            --primary-glow-color: #00f7ff; /* Neon Cyan */
+            --secondary-glow-color: #ff00c1; /* Neon Magenta */
+            --background-color: #12121c; /* Koyu Uzay Mavisi */
+            --surface-color: #1e1e2c; /* Kartlar için biraz daha açık */
+            --text-color: #e0e0e0;
             --header-height: 80px;
         }
 
@@ -22,10 +23,14 @@
             margin: 0;
             padding: 0;
         }
+        
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-color);
             background-color: var(--background-color);
             padding-top: var(--header-height);
@@ -37,16 +42,21 @@
             padding: 0 20px;
         }
 
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+
         /* Header and Navigation */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(18, 18, 28, 0.8);
             backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 247, 255, 0.2);
             height: var(--header-height);
             display: flex;
             align-items: center;
@@ -60,10 +70,22 @@
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #fff;
             text-decoration: none;
+            text-shadow: 
+                0 0 5px var(--primary-glow-color),
+                0 0 10px var(--primary-glow-color),
+                0 0 20px var(--primary-glow-color);
+            transition: text-shadow 0.3s ease;
+        }
+        .logo:hover {
+            text-shadow: 
+                0 0 10px var(--secondary-glow-color),
+                0 0 20px var(--secondary-glow-color),
+                0 0 40px var(--secondary-glow-color);
         }
 
         .nav-links {
@@ -77,11 +99,13 @@
             color: var(--text-color);
             font-weight: 600;
             font-size: 1.1rem;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            text-transform: uppercase;
         }
 
         .nav-links a:hover {
-            color: var(--primary-color);
+            color: var(--primary-glow-color);
+            text-shadow: 0 0 10px var(--primary-glow-color);
         }
 
         /* Hero Section */
@@ -92,12 +116,9 @@
             flex-direction: column;
             text-align: center;
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--secondary-color), #e9ecef);
+            background: radial-gradient(circle, var(--surface-color) 0%, var(--background-color) 70%);
             min-height: calc(100vh - var(--header-height));
-        }
-
-        .hero-content {
-            max-width: 800px;
+            overflow: hidden;
         }
 
         .profile-image {
@@ -105,17 +126,28 @@
             height: 250px;
             border-radius: 50%;
             object-fit: cover;
-            border: 8px solid #fff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 4px solid var(--primary-glow-color);
+            box-shadow: 
+                0 0 15px var(--primary-glow-color),
+                0 0 30px var(--primary-glow-color),
+                inset 0 0 10px var(--primary-glow-color);
             margin-bottom: 30px;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px var(--primary-glow-color), 0 0 30px var(--primary-glow-color), inset 0 0 10px var(--primary-glow-color); }
+            50% { box-shadow: 0 0 25px var(--secondary-glow-color), 0 0 50px var(--secondary-glow-color), inset 0 0 15px var(--secondary-glow-color); }
+            100% { box-shadow: 0 0 15px var(--primary-glow-color), 0 0 30px var(--primary-glow-color), inset 0 0 10px var(--primary-glow-color); }
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--primary-color);
+            color: #fff;
             line-height: 1.2;
+            text-shadow: 0 0 10px var(--secondary-glow-color);
         }
 
         .hero-content p {
@@ -124,68 +156,92 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            color: #555;
+            color: var(--text-color);
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--primary-color);
-            color: #fff;
+            background-color: transparent;
+            color: var(--primary-glow-color);
+            border: 2px solid var(--primary-glow-color);
             padding: 15px 35px;
             font-size: 1.2rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--primary-glow-color), inset 0 0 5px var(--primary-glow-color);
+            text-transform: uppercase;
         }
 
         .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+            background-color: var(--primary-glow-color);
+            color: var(--background-color);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.4);
         }
 
         /* About Section */
         .about-section {
-            padding: 80px 0;
-            background-color: #fff;
+            padding: 100px 0;
+            background-color: var(--background-color);
             text-align: center;
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
+        }
+        
+        .about-section .container {
+            background-color: var(--surface-color);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 0, 193, 0.1);
         }
 
         .about-section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-color);
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-glow-color);
+            text-shadow: 0 0 10px var(--primary-glow-color);
         }
 
         .about-section p {
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
             font-size: 1.15rem;
-            line-height: 1.8;
-            color: #666;
+            color: var(--text-color);
         }
 
         /* Footer */
         footer {
-            background-color: var(--text-color);
-            color: var(--secondary-color);
+            background-color: var(--surface-color);
+            color: var(--text-color);
             text-align: center;
             padding: 30px 0;
             font-size: 1rem;
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
         }
 
         footer a {
-            color: var(--primary-color);
+            color: var(--primary-glow-color);
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--secondary-glow-color);
+            text-shadow: 0 0 5px var(--secondary-glow-color);
         }
 
         /* Mobile responsive */
         @media (max-width: 768px) {
+            header {
+                height: auto;
+                padding: 15px 0;
+            }
             .navbar {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
             }
 
             .nav-links {
@@ -193,27 +249,26 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-
-            .logo {
-                margin-bottom: 10px;
-            }
-
+            
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .hero-content p {
                 font-size: 1.2rem;
             }
-
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 1rem;
-            }
-
+            
             .profile-image {
                 width: 180px;
                 height: 180px;
+            }
+            
+            .about-section .container {
+                padding: 30px;
+            }
+            
+            .about-section h2 {
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -264,7 +319,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 DAA Studio. All rights reserved. | <a href="https://daastudio.github.io/">daastudio.github.io</a></p>
+            <p>© 2025 DAA Studio. All rights reserved. | <a href="https://daastudio.github.io/">daastudio.github.io</a></p>
         </div>
     </footer>
 
