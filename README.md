@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -33,6 +33,7 @@
             line-height: 1.7;
             color: var(--text-color);
             background-color: var(--background-color);
+            /* Sadece masaüstü için padding-top */
             padding-top: var(--header-height);
         }
 
@@ -51,7 +52,7 @@
         header {
             background: rgba(18, 18, 28, 0.8);
             backdrop-filter: blur(10px);
-            position: fixed;
+            position: fixed; /* Masaüstünde sabit */
             top: 0;
             left: 0;
             width: 100%;
@@ -60,6 +61,7 @@
             height: var(--header-height);
             display: flex;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
         .navbar {
@@ -136,9 +138,9 @@
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 15px var(--primary-glow-color), 0 0 30px var(--primary-glow-color), inset 0 0 10px var(--primary-glow-color); }
-            50% { box-shadow: 0 0 25px var(--secondary-glow-color), 0 0 50px var(--secondary-glow-color), inset 0 0 15px var(--secondary-glow-color); }
-            100% { box-shadow: 0 0 15px var(--primary-glow-color), 0 0 30px var(--primary-glow-color), inset 0 0 10px var(--primary-glow-color); }
+            0% { box-shadow: 0 0 15px var(--primary-glow-color), 0 0 30px var(--primary-glow-color), inset 0 0 10px var(--primary-glow-color); border-color: var(--primary-glow-color); }
+            50% { box-shadow: 0 0 25px var(--secondary-glow-color), 0 0 50px var(--secondary-glow-color), inset 0 0 15px var(--secondary-glow-color); border-color: var(--secondary-glow-color); }
+            100% { box-shadow: 0 0 15px var(--primary-glow-color), 0 0 30px var(--primary-glow-color), inset 0 0 10px var(--primary-glow-color); border-color: var(--primary-glow-color); }
         }
 
         .hero-content h1 {
@@ -235,27 +237,39 @@
 
         /* Mobile responsive */
         @media (max-width: 768px) {
-            header {
-                height: auto;
-                padding: 15px 0;
+            /* En önemli düzeltme: Mobilde header sabit olmasın ve body'nin padding'i sıfırlansın */
+            body {
+                padding-top: 0; 
             }
+            header {
+                position: relative; /* Sabit değil, normal akışta */
+                height: auto;
+                padding: 20px 0;
+            }
+            /*---------------------------------------------------------------------------------*/
+            
             .navbar {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
             }
 
             .nav-links {
-                gap: 20px;
+                gap: 25px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             
+            .hero-section {
+                padding: 60px 0;
+                min-height: auto; /* Yükseklik içeriğe göre ayarlanacak */
+            }
+
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem; /* Mobil için daha uygun bir başlık boyutu */
             }
 
             .hero-content p {
-                font-size: 1.2rem;
+                font-size: 1.1rem; /* Mobil için daha uygun paragraf boyutu */
             }
             
             .profile-image {
@@ -263,6 +277,10 @@
                 height: 180px;
             }
             
+            .about-section {
+                padding: 80px 0;
+            }
+
             .about-section .container {
                 padding: 30px;
             }
