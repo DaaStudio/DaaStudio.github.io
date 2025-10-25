@@ -1,4 +1,3 @@
-
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -50,7 +49,7 @@
 
         /* Header and Navigation */
         header {
-            background: rgba(18, 18, 28, 0.8);
+            background: rgba(18, 18, 28, 0.95);
             backdrop-filter: blur(10px);
             position: fixed; /* Masaüstünde sabit */
             top: 0;
@@ -108,6 +107,21 @@
         .nav-links a:hover {
             color: var(--primary-glow-color);
             text-shadow: 0 0 10px var(--primary-glow-color);
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-glow-color);
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
@@ -237,39 +251,79 @@
 
         /* Mobile responsive */
         @media (max-width: 768px) {
-            /* En önemli düzeltme: Mobilde header sabit olmasın ve body'nin padding'i sıfırlansın */
+            /* Header düzeltmeleri */
             body {
-                padding-top: 0; 
+                padding-top: 70px; /* Mobilde header sabit olduğu için padding gerekli */
             }
+            
             header {
-                position: relative; /* Sabit değil, normal akışta */
-                height: auto;
-                padding: 20px 0;
+                position: fixed; /* Mobilde de sabit kalsın */
+                height: 70px;
+                padding: 0;
             }
-            /*---------------------------------------------------------------------------------*/
             
             .navbar {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .nav-links {
-                gap: 25px;
-                flex-wrap: wrap;
-                justify-content: center;
+                padding: 0 20px;
             }
             
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(18, 18, 28, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            /* Hero section düzeltmeleri */
             .hero-section {
                 padding: 60px 0;
-                min-height: auto; /* Yükseklik içeriğe göre ayarlanacak */
+                min-height: calc(100vh - 70px);
             }
 
             .hero-content h1 {
-                font-size: 2.5rem; /* Mobil için daha uygun bir başlık boyutu */
+                font-size: 2.2rem;
+                padding: 0 10px;
             }
 
             .hero-content p {
-                font-size: 1.1rem; /* Mobil için daha uygun paragraf boyutu */
+                font-size: 1.1rem;
+                padding: 0 15px;
             }
             
             .profile-image {
@@ -277,16 +331,52 @@
                 height: 180px;
             }
             
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            /* About section düzeltmeleri */
             .about-section {
-                padding: 80px 0;
+                padding: 60px 0;
             }
 
             .about-section .container {
-                padding: 30px;
+                padding: 30px 20px;
+                margin: 0 15px;
             }
             
             .about-section h2 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+            }
+            
+            .about-section p {
+                font-size: 1rem;
+                text-align: left;
+            }
+        }
+        
+        /* Çok küçük ekranlar için ek düzenlemeler */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .about-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -296,8 +386,13 @@
     <header>
         <div class="container navbar">
             <a href="https://daastudio.github.io/" class="logo">DAA Studio</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <nav>
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="https://daastudio.github.io/">Home</a></li>
                     <li><a href="https://play.google.com/store/apps/dev?id=5180315254549954413" target="_blank">Apps</a></li>
                     <li><a href="#about">About</a></li>
@@ -340,6 +435,33 @@
             <p>© 2025 DAA Studio. All rights reserved. | <a href="https://daastudio.github.io/">daastudio.github.io</a></p>
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Menü dışına tıklandığında menüyü kapat
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Linklere tıklandığında menüyü kapat
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
